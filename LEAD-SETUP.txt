@@ -1,0 +1,17 @@
+ペットCAM リード連携
+
+1. Catch Hookでテスト待機し、公開後に管理者の確認用連絡先で1件送信
+2. Code by ZapierのInput Dataに次のキーを作り、Catch Hookの同名項目を指定
+name, kana, region, building, internet, tel, email, postal, address, privacy_consent, submission_id, utm_source, utm_medium, utm_campaign, utm_term, utm_content, placement, keyword, matchtype, gclid, fbclid, lpv, lp_path, source_url, referrer, submitted_at
+3. scripts/zapier-transform.jsを貼付（postalとtelは文字列のまま保持）
+4. submission_idで重複除外し、シート／CRM等へ各項目をマッピング
+5. 保存先で項目とJST時刻を確認してZapを有効化
+6. GTM-KMR3S26Kにカスタムイベントform_submit_cvのトリガーを作成
+7. 必要な広告CVタグにそのトリガーを設定。サンクスPVとの二重計測を避ける
+8. GTM Previewでイベントと各広告タグを確認し、コンテナを公開
+
+実送信とGTM管理画面での検証は未実施
+no-cors方式のため、ブラウザの画面遷移だけでは受信成功を判断できません
+フォームの内容をdataLayerへ追加しないでください
+
+お知らせ配信は実装していません。addressは都道府県から番地までの住所、buildingは建物名・部屋番号です。

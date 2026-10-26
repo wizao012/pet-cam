@@ -1,0 +1,13 @@
+{
+  "name": "pet-cam",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ペットCAM公式サイト",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/check-cv.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
